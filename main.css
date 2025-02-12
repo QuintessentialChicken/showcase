@@ -97,8 +97,6 @@ header {
     height: 100vh;
 }
 
-.hero {
-}
 
 .hero-title {
     margin: 0;
@@ -126,6 +124,14 @@ header {
 
 .hero-graphic {
     border-radius: 10px
+}
+
+.arrow-down {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 .projects {
