@@ -134,33 +134,44 @@ header {
     text-align: center;
 }
 
-.projects {
-    width: 90%;
-    letter-spacing: 2px;
-}
 
-.projects-title {
+
+.section-title {
     text-align: left;
     margin-bottom: -70px;
     font-size: 8em;
 }
 
-.project {
+.about-title {
+    text-align: right;
+}
+
+.section {
+    width: 90%;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+}
+
+.section-entry {
     display: flex;
     gap: 2em;
     flex-direction: column;
     align-items: center;
     background-color: #2D2D2D;
-    padding: 6%;
+    padding: 3%;
     height: 600px;
     margin-top: 30px;
     
 }
-
-.project-title {
-    font-size: 3em;
+.entry-title {
+    font-size: 2em;
     text-align: center;
 }
+.about {
+    height: fit-content;
+}
+
+
 
 .project-image {
     height: 50%;
