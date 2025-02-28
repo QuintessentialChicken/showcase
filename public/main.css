@@ -26,12 +26,22 @@ a {
     font-weight: 300;
     text-decoration: none;
     color: #ddd;
+    line-height: 0;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
 }
 
 p {
     font-size: 1.5em;
     text-align: center;
     margin: 0;
+    font-weight: 300;
+
 }
 
 ul {
@@ -41,8 +51,9 @@ ul {
 
 img {
     object-fit: contain;
-    max-height: 100%;
-    max-width: 360px;
+    max-height: 400px;
+    max-width: min(360px, 80vw);
+    border-radius: 5px;
 }
 
 header {
@@ -135,7 +146,24 @@ header {
     text-align: center;
 }
 
+.container-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90%;
+}
 
+.icon {
+    /* background-color: white; */
+    border-radius: 25%;
+    height: 80px;
+    width: 80px;
+}
+
+.icon-img {
+    height: 80px;
+    width: 80px;
+}
 
 .section-title {
     text-align: left;
@@ -143,7 +171,7 @@ header {
     font-size: 8em;
 }
 
-.about-title {
+.title-right {
     text-align: right;
 }
 
@@ -161,7 +189,7 @@ header {
     background-color: #2D2D2D;
     padding: 3%;
     padding-top: 5%;
-    height: 600px;
+    height: fit-content;
     margin-top: 30px;
     
 }
@@ -172,8 +200,9 @@ header {
 }
 
 .entry-text {
-    font-size: 1.5em;
-    line-height: 1.7em;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 1.5em;
     text-align: center;
 }
 
@@ -181,15 +210,16 @@ header {
     height: fit-content;
 }
 
-
-
-.project-description {
+.project-image {
+    height: fit-content;
+    
+    border-radius: 5px;
 }
 
-@media (max-width: 1500px) {
-    ::-webkit-scrollbar {
-        display: block;
-    }
+.project-image:hover {
+}
+
+@media (max-width: 1200px) {
 
     .section {
         width: 80%;
@@ -198,7 +228,7 @@ header {
 }
 
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
     .section {
         width: 90%;
     }
@@ -213,10 +243,6 @@ header {
         height: fit-content;
     }
 
-    .project-image {
-        height: 500px;
-    }
-    
 }
 .about {
     height: fit-content;
