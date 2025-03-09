@@ -197,7 +197,18 @@ header {
     margin-bottom: 50px;
 }
 
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .section-entry {
+    position: relative;
+    z-index: -1;
     display: flex;
     gap: 2em;
     flex-direction: row;
