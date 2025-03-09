@@ -28,12 +28,12 @@ a {
     color: #ddd;
     line-height: 0;
     display: block;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 a:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 15px 5px rgba(0, 0, 0, 0.7);
 }
 
 p {
@@ -107,6 +107,10 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.hero {
+    margin-top: -100px;
 }
 
 
