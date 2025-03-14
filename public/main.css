@@ -51,7 +51,7 @@ ul {
 
 img {
     object-fit: contain;
-    max-height: 400px;
+    max-height: 300px;
     max-width: min(360px, 80vw);
     border-radius: 5px;
 }
@@ -230,7 +230,7 @@ header {
     font-weight: 300;
     font-size: 1.2em;
     line-height: 1.5em;
-    text-align: center;
+    text-align: justify;
 }
 
 .about {
@@ -284,6 +284,10 @@ header {
 
     .arrow-down__second {
         width: 120px;
+    }
+
+    .entry-title {
+        font-size: 2em;
     }
 }
 .about {
