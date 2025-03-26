@@ -185,6 +185,8 @@ header {
 }
 
 .section-title {
+    position: relative;
+    z-index: 1;
     text-align: left;
     margin-bottom: -70px;
     font-size: 8em;
@@ -204,7 +206,6 @@ header {
 
 .section-entry {
     position: relative;
-    z-index: -1;
     display: flex;
     gap: 2em;
     flex-direction: row;
