@@ -166,21 +166,23 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 15px;
     position: absolute;
-    top: -30px;
+    top: -35px;
     right: 0;
     margin-right: 5%;
+    background-color: #fff;
+    padding: 5px 10px;
 }
 
 .icon {
     /* background-color: white; */
     border-radius: 25%;
-    height: 60px;
-    width: 60px;
+    height: 40px;
 }
 
 .icon-img {
-    max-width: 100%;
+    /* max-width: 100%; */
     max-height: 100%;
 }
 
@@ -188,7 +190,7 @@ header {
     position: relative;
     z-index: 1;
     text-align: left;
-    margin-bottom: -70px;
+    margin-bottom: -90px;
     font-size: 8em;
 }
 
@@ -197,7 +199,7 @@ header {
 }
 
 .section {
-    width: 70%;
+    width: 60%;
     letter-spacing: 2px;
     margin-bottom: 50px;
 }
@@ -214,7 +216,7 @@ header {
     padding: 3%;
     padding-top: 5%;
     height: fit-content;
-    margin-top: 30px;
+    margin-top: 50px;
     
 }
 .entry-title {
@@ -240,14 +242,18 @@ header {
     border-radius: 5px;
 }
 
+.project-description {
+    width: 50%;
+}
+
 .project-image__img {
     object-fit: contain;
-    max-height: 300px;
+    max-height: 400px;
     max-width: min(360px, 80vw);
     border-radius: 5px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
 
     .section {
         width: 80%;
@@ -257,13 +263,15 @@ header {
 
 
 @media (max-width: 1000px) {
-
+    .icons {
+        visibility: hidden;
+    }
     .section {
         width: 90%;
     }
     .section-title {
         font-size: 4em;
-        margin-bottom: -50px;
+        margin-bottom: -70px;
     }
 
     .section-entry {
@@ -275,6 +283,7 @@ header {
 }
 
 @media (max-width: 725px) {
+
     .hero-title {
         font-size: 7em;
     }
