@@ -17,11 +17,31 @@
 	<div class="container">
 		<div class="section">
 			<div class="section-entry">
-				<h1 class="section-title">Developing a Game Engine</h1>
+				<h1 class="title">Developing a Game Engine</h1>
                 <p class="section-text">
                     Welcome to my game engine blog. This is a project I started recently to learn more about game development and engine architecture and I will use this page to document my progress.
                     <br><br>
                     Stay tuned to follow me figure out various subsystems like rendering, physics, AI, and more.
+				</p>
+			</div>
+			<div class="section-entry">
+				<h1 class="section-subtitle">Getting Started</h1>
+				<sub>30.04.2025</sub>
+                <p class="section-text">
+					This was probably the hardest step of them all and I'm still not quite done with it. Whenever I start a new project, I tend to get hung up on "doing it right" from the beginning so that
+					I don't have to change it later but it results in not making much progress. Since architecture is such a central part though, I allowed myself some more time to gather information.
+					I started following a DirectX tutorial by ChiliTomatoNoodle (yes, that's the name) and it got me started initially on DirectX but it wasn't good for architecture. Another resource I can
+					recommend is the classic book "Game Engine Architecture" by Jason Gregory. It gives great insights on a lot of aspects of an engine but again, it was hard to develop an idea for how 
+					everything works together.
+					<br><br>
+					What really had the biggest impact for me was getting my hands on the source code of an actual successful engine, written in C++ and with DirectX. I spent days on end combing through
+					the code, peeling back the abstraction layers, finding out where the damn thing's entry point even was. But once I got used to it, I used it constantly to check their way of doing it.
+					<br><br>
+					The first big question mark I had was when I found that the reference engine used almost exclusively static functions and global variables in all the startup parts of the engine. Here I was
+					after years of university where object-oriented programming was the center of the universe looking at code, that was (almost) entirely without it. I checked the book again and it actually 
+					recommended that exact approach so that's what I went with.
+					<br>
+
 				</p>
 			</div>
 		</div>
