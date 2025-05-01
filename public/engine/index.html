@@ -26,7 +26,7 @@
 			</div>
 			<div class="section-entry">
 				<h1 class="section-subtitle">Getting Started</h1>
-				<sub>30.04.2025</sub>
+				<!-- <sub>30.04.2025</sub> -->
                 <p class="section-text">
 					This was probably the hardest step of them all and I'm still not quite done with it. Whenever I start a new project, I tend to get hung up on "doing it right" from the beginning so that
 					I don't have to change it later but it results in not making much progress. Since architecture is such a central part though, I allowed myself some more time to gather information.
@@ -40,9 +40,36 @@
 					The first big question mark I had was when I found that the reference engine used almost exclusively static functions and global variables in all the startup parts of the engine. Here I was
 					after years of university where object-oriented programming was the center of the universe looking at code, that was (almost) entirely without it. I checked the book again and it actually 
 					recommended that exact approach so that's what I went with.
-					<br>
-
 				</p>
+				<h1 class="section-subtitle">So this is the architecture as of now:</h1>
+				<i>There's a chart at the bottom</i>
+				<p class="section-text">
+					There is the <code>main</code> function where the program enters. It lives inside the engine and all it does is call an entry point function that the game has set. This involves quite a nifty trick
+					where the game defines a static struct instance somewhere which sets function pointers to it's entry points. The engine then calls whatever is in those pointers. Since static variables 
+					are initialized before the <code>main</code> function, the entry points are set before the engine starts up. This allows the game to define a prologue function which is run before everything else,
+					the main function which is run continuously in a loop and an epilogue function which is run after the game or engine has signaled to shutdown.
+					<br>
+					And so we have a way of starting the engine while keeping the game separated yet still in control.
+					<br><br>
+					The game then creates an instance of <code>App</code> which is responsible for the lifecycle of the engine. The idea is to implement a finite state machine later on to manage the state
+					that the engine is in but for now, calling <code>App::RunOneIteration()</code> just checks a <code>isInitialized</code> flag and decides based on that whether to run <code>Init</code>
+					or <code>RunGame()</code>. But before that, the game can make use of it's prologue entry point to register init and update functions that it wants called once at startup or once a loop
+					respectively.
+					<br><br>
+					In the main game loop, the game calls <code>App::RunOneIteration()</code> which enters its first "state", the Init state. It calls the respective init functions of all subsystems in the
+					correct order before calling each of the init functions that were registered in the prologue. I will go into more detail regarding the initialization of the specific subsystems like the 
+					Win32 and DirectX setup in a later post. So, we return from <code>App::RunOneIteration()</code>, the engine's checks if the return value signals a shutdown and if not, runs the same thing again. This time though, the App enters into <code>RunGame()</code>. This is where messages from Windows are intercepted, checked for
+					<code>WM_QUIT</code>, which indicates a request to terminate the application, and dispatched for further processing down the road like user input and such. After that, all the registered
+					update functions are called before, finally, the frame is rendered.
+				</p>
+				<h2>And that's basically it</h2>
+				<P class="section-text">
+					We have set up everything, we let it run until something asks for quitting at which point <code>App</code> runs it's final function <code>App::Shutdown()</code> and returns back to the 
+					engine entry point, which terminates the app. Easy, right?
+					<br><br>
+					Below is a chart that I made to break down what's happening. The yellow boxes on the left are on the engine side, the blue one is the game side. The light orange ones are functions.
+				</P>
+				<img src="../images/Architecture_1.jpg">
 			</div>
 		</div>
 	</div>
