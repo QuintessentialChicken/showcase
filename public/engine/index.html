@@ -26,6 +26,25 @@
 				</p>
 			</div>
 			<div class="section-entry">
+				<h1 class="section-subtitle">Rendering with DirectX</h1>
+			</div>
+			<div class="section-entry">
+				<h1 class="section-subtitle">Setting up the first window</h1>
+				<p class="section-text">
+					This post will deal with creating the first window. It's a great moment because it's the first time you actually get to see your creation.
+					Like any good setup functionality, this happens in an <code>Init</code> function, specifically that of <code>GfxDevice</code>. This class
+					combines Win32 stuff with DirectX stuff, though the implementations are split into their respective files. <code>Init</code> is defined in the D3D11 part
+					but checks at the very start, if a window has been created. If not, it calls <code>CreateDeviceWindow()</code> which is where the Win32-API comes into play.
+					<br><br>
+					<code>CreateDeviceWindow</code> goes through the usual window creation steps like creating a window class where icon, window procedure (more about that later) and other
+					things are set. After that we calculate the window rectangle based on the client size we want using <code>AdjustWindowRect</code>. With the window rect and the window class, we can
+					now actually create a window. We pass in the title, the style (i.e. what kind of window we want (with or without border, title bar, border, etc.)) and then that's basically it.
+					All that is left to do is call <code>ShowWindow</code>, passing in the result of our efforts and the window will appear. This is also where we initialize the Win32 part of Imgui.
+					<br><br>
+					The interesting remaining part is the Window Procedure. 
+				</p>
+			</div>
+			<div class="section-entry">
 				<h1 class="section-subtitle">Getting Started</h1>
 				<!-- <sub>30.04.2025</sub> -->
                 <p class="section-text">
@@ -72,6 +91,7 @@
 				</P>
 				<img src="../images/Architecture_1.jpg">
 			</div>
+		
 		</div>
 	</div>
 </body>
