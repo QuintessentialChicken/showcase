@@ -25,11 +25,12 @@
                     Stay tuned to follow me figure out various subsystems like rendering, physics, AI, and more.
 				</p>
 			</div>
-			<div class="section-entry">
+			<!-- <div class="section-entry">
 				<h1 class="section-subtitle">Rendering with DirectX</h1>
-			</div>
+			</div> -->
 			<div class="section-entry">
 				<h1 class="section-subtitle">Setting up the first window</h1>
+				<sub>09.05.2025</sub>
 				<p class="section-text">
 					This post will deal with creating the first window. It's a great moment because it's the first time you actually get to see your creation.
 					Like any good setup functionality, this happens in an <code>Init</code> function, specifically that of <code>GfxDevice</code>. This class
@@ -41,12 +42,33 @@
 					now actually create a window. We pass in the title, the style (i.e. what kind of window we want (with or without border, title bar, border, etc.)) and then that's basically it.
 					All that is left to do is call <code>ShowWindow</code>, passing in the result of our efforts and the window will appear. This is also where we initialize the Win32 part of Imgui.
 					<br><br>
-					The interesting remaining part is the Window Procedure. 
+					The remaining part to talk about is the Window Procedure. This is a function that we pass to our window which defines how we want to react to certain Windows messages that are sent 
+					to our window. The signature has the format <code>LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)</code> where <code>hWnd</code> is the handle to the window,
+					<code>msg</code> is the message code sent by Windows, and <code>wParam</code> and <code>lParam</code> carry values that are relevant to the message (like the position of the cursor for a mouse move message).
+					<code>LRESULT</code> is just a typedef for <code>LONG_PTR</code> and it's used to return things to Windows. You can use it to chain multiple procedures together which is useful for
+					calling the default procedure after you have handled all messages that are relevant for you. This makes sure that all the standard stuff like moving and resizing your window is handled correctly.
+					<br><br>
+					But what you can also do is split your message handling into multiple parts where every subsystem defines their own procedure and picks out the messages they need. In Sirius, the main
+					procedure that is passed to the window just handles <code>WM_CLOSE</code> i.e., the user indicating that they want to close the window. It calls <code>PostQuitMessage(EXIT_SUCCESS)</code>
+					which puts <code>WM_QUIT</code> in the message loop which is picked up by our message dispatch in <code>App</code> which then initiates the shutdown of the app. But if it doesn't pick up
+					<code>WM_CLOSE</code> it just returns the next window procedure which is the one for the input. Or rather, it returns whichever procedure is stored in <br><code>LRESULT (__stdcall * g_WindowProc)(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)</code>
+					This allows <code>Input</code> to define its own procedure and store it in <code>g_WindowProc</code> and it will be called.
+					<br><br>
+					The input window proc is just what you expect. Whenever an input event comes in (like <code>WM_LBUTTONDOWN</code> or <code>WM_KEYDOWN</code>) it sets the appropriate variable in the respective input class.
+					This allows other parts of the engine to query the input classes to find out if a button is pressed or not, where the mouse is on the screen, if it's in the window, etc. I'm planning on creating
+					a control manager which abstracts the physical device from the keybindings in the game so that the game developer can just bind certain actions to certain generic inputs. This way, the
+					programmer doesn't have to distinguish between pressing the <code>A</code> button on an Xbox controller and the <code>X</code> button on a PlayStation controller for jumping. They just specify
+					that whenever the player presses the south button on their controller, they jump. The device class handles all the different devices under the hood but in the end, the higher level systems
+					will just query <code>IsButtonPressed("Gamepad South")</code>.
+					<br><br>
+					The input system will be covered in a future post.
+					<br><br>
+					To learn more about Window Procedurs in Win32, check out the <a class="inline-link" style="display: inline-block;" href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/writing-the-window-procedure"><u><b>official documentation</b></u></a>.
 				</p>
 			</div>
 			<div class="section-entry">
 				<h1 class="section-subtitle">Getting Started</h1>
-				<!-- <sub>30.04.2025</sub> -->
+				<sub>30.04.2025</sub>
                 <p class="section-text">
 					This was probably the hardest step of them all and I'm still not quite done with it. Whenever I start a new project, I tend to get hung up on "doing it right" from the beginning so that
 					I don't have to change it later but it results in not making much progress. Since architecture is such a central part though, I allowed myself some more time to gather information.
