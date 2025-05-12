@@ -29,6 +29,35 @@
 				<h1 class="section-subtitle">Rendering with DirectX</h1>
 			</div> -->
 			<div class="section-entry">
+				<h1 class="section-subtitle">Version Control with Git</h1>
+				<sub>12.05.2025</sub>
+				<p class="section-text">
+					I always use Git when I'm working on a project. It's invaluable for staying on top of what changed when and why. On thing I noticed when I started using Git was how my code base became
+					much cleaner because I could suddenly just delete things at a whim instead of commenting them out in case I need them again later. If it turns out that I do need them, I'll just check
+					the changes in Git and copy them from there. There have been a couple of times in this project where I started working on something and wondering: "Hang on, how did I do this before?".
+					With Git I can then just check out the commit where everything worked and use my IDE to the fullest instead of picking around individual commits trying to find definitions by hand.
+				</p>
+				<h2>My tools</h2>
+				<p class="section-text">
+					I use GitKraken as a Git client. There is certainly a benefit of using a CLI, especially at first to learn how everything works. But I've done that and having a GUI with all changes,
+					branches, remotes, commits and much more at a single glance I've been able to speed up my workflow by a lot. Now and then, when I can't find a specific command in GitKraken or it's not
+					specific enough I go back to the (integrated) terminal but for the most part I don't need that. The only thing that is extremely annoying with GitKraken is how it stashes things
+					automatically every time you tell it to pull, switch branches, checkout a commit, etc. I get that this way the action can be performed despite having uncommited changes on the working branch,
+					but most of the time I would prefer if it just gave me an error so I can decide how I want to handle this myself.
+					<br><br>
+					For my remote I just push everything to GitHub. It has a good integration with GitKraken and pretty much just works. I had no complaints about it in all the years I've used it.
+				</p>
+				<h2>Structure</h2>
+				<p class="section-text">
+					I started this project with just a single monolithic branch where everything goes down. Rewriting the entire engine to make it API-agnostic? - Master Branch. Reorganizing file Structure
+					with 50+ changed files? - Master branch. Implementing an entirely new feature? - You guessed it, master branch. This works of course, there are no merge conflicts so that's nice. But after
+					the 10th time of telling someone who asks about my progress that I had this cool feature but I can't show them right now because I'm rewriting it and I have about 200 compiler errors to get through before
+					the program will even run again, I decided that it's time for a second branch. Introducing: The dev branch. From now on, I will develop all my changes on this branch and as soon as they're
+					ready, i.e., produce a working application, I will fast-forward the master branch to include the changes. This way, whenever I want to just showcase the current state I can simply switch
+					to the master branch and run the latest stable version on master without having to comment out every red squiggly line on dev to make it kinda run.
+				</p>
+			</div>
+			<div class="section-entry">
 				<h1 class="section-subtitle">Setting up the first window</h1>
 				<sub>09.05.2025</sub>
 				<p class="section-text">
@@ -83,7 +112,7 @@
 					after years of university where object-oriented programming was the center of the universe looking at code, that was (almost) entirely without it. I checked the book again and it actually 
 					recommended that exact approach so that's what I went with.
 				</p>
-				<h1 class="section-subtitle">So this is the architecture as of now:</h1>
+				<h2>So this is the architecture as of now:</h2>
 				<i>There's a chart at the bottom</i>
 				<p class="section-text">
 					There is the <code>main</code> function where the program enters. It lives inside the engine and all it does is call an entry point function that the game has set. This involves quite a nifty trick
